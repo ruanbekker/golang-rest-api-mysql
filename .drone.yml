@@ -1,0 +1,32 @@
+kind: pipeline
+name: golang-rest-api
+type: docker
+
+steps:
+- name: test
+  image: golang:alpine
+  commands:
+  - go test -v
+  
+- name: build
+  image: golang:alpine
+  commands:
+  - go build -o app
+  
+- name: deploy
+  image: golang:alpine
+  commands:
+  - echo deploy
+
+services:
+- name: mysql
+  image: mysql:5.7
+  environment:
+    MYSQL_DATABASE: rest_api_example
+    MYSQL_ROOT_PASSWORD: password
+    MYSQL_USER: demo
+    MYSQL_PASSWORD: demo
+    
+volumes:
+- name: shared
+  temp: {}
