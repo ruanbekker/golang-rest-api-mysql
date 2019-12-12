@@ -16,7 +16,7 @@ var a App
 
 func TestMain(m *testing.M) {
 	a = App{}
-	a.Initialize("root", "password", "tcp(10.0.4.62:3306)", "rest_api_example")
+	a.Initialize("root", "password", "mysql", "rest_api_example")
 
 	ensureTableExists()
 
