@@ -9,6 +9,6 @@ ADD code /go/godemo
 
 WORKDIR /go/godemo
 
-RUN go get && go build -o app
+RUN go get && go test -v && go build -o app
 
 CMD ["/go/godemo/app"]
